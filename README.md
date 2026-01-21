@@ -7,49 +7,36 @@ Homey Pro app for NovaDigital and Zemismart Tuya Zigbee devices. Supports multi-
 ### Multi-Gang Wall Switches
 
 #### 1-Gang Switch
-- **NovaDigital 1-Gang Switch**
-  - Manufacturer: `_TZE200_amp6tsvy`, `_TZE200_oisqyl4o`, `_TZE200_wunufsil`, `_TZE204_sooucan5`
-  - Product ID: `TS0601`
+- **NovaDigital /Zemismart 1-Gang Switch **
+  - Manufacturer: `_TZ3000_ovyaisip`, `_TZ3000_pk8tgtdb`
+  - Product ID: `TS0001`
 
 #### 2-Gang Switches
-- **NovaDigital 2-Gang Switch**
-  - Manufacturer: `_TZE200_g1ib5ldv`, `_TZE200_wunufsil`, `_TZE204_sooucan5`
-  - Product ID: `TS0601`
+- **NovaDigital /Zemismart 2-Gang Switch**
+  - Manufacturer: `_TZ3000_kgxej1dv", `_TZ3000_ywubfuvt"`
+  - Product ID: `TS0002`
 
-- **Zemismart 2-Gang Switch**
-  - Manufacturer: `_TZE200_dhdstcqc`
-  - Product ID: `TS0601`
 
 #### 3-Gang Switches
-- **NovaDigital 3-Gang Switch**
-  - Manufacturer: `_TZE200_tz32mtza`, `_TZE200_1ozguk6x`, `_TZE200_wunufsil`, `_TZE204_sooucan5`
-  - Product ID: `TS0601`
+- **NovaDigital /Zemismart  3-Gang Switch /2-Gang Switch + Socket (No metering) **
+  - Manufacturer: `"_TZ3000_yervjnlj", _TZ3000_vjhcenzo", "_TZ3000_qxcnwv26", "_TZ3000_eqsair32", "_TZ3000_f09j9qjb", "_TZ3000_fawk5xjv", "_TZ3000_ok0ggpk7"
+  - Product ID: `TS0003`
 
-- **Zemismart 3-Gang Switch**
-  - Manufacturer: `_TZE200_9mahtqtg`
-  - Product ID: `TS0601`
 
 #### 4-Gang Switch
-- **NovaDigital 4-Gang Switch**
-  - Manufacturer: `_TZE200_k6jhsr0q`, `_TZE200_wunufsil`, `_TZE204_sooucan5`
+- **NovaDigital /Zemismart  4-Gang Switch**
+  - Manufacturer: "_TZE200_shkxsgis",  "_TZE204_aagrxlbd"
   - Product ID: `TS0601`
 
 #### 6-Gang Switch
-- **NovaDigital 6-Gang Switch**
-  - Manufacturer: `_TZE200_9mahtqtg`
+- **Zemismart  6-Gang Switch**
+  - Manufacturer: `"_TZE200_r731zlxk`
   - Product ID: `TS0601`
 
-### Combination Devices
-
-#### 2-Gang Switch + Socket
-- **NovaDigital 2-Gang + Socket**
-  - Manufacturer: `_TZE200_vhy3iakz`
-  - Product ID: `TS0601`
-  - Note: Socket without power monitoring
 
 ### Fan Controllers
 
-#### 3-Gang Fan Controller
+#### 3-Gang Moes Dimmer
 - **MOES 3-Gang Fan Controller**
   - Manufacturer: `_TZE204_1v1dxkck`
   - Product ID: `TS0601`
@@ -59,19 +46,19 @@ Homey Pro app for NovaDigital and Zemismart Tuya Zigbee devices. Supports multi-
 
 #### Temperature Sensors
 - **Tuya Temperature & Humidity Sensor**
-  - Manufacturer: `_TZE200_a8sdabtg`, `_TZE204_auin4exy`
-  - Product ID: `TS0601`
+  - Manufacturer: `_TZ3000_ywagc4rj'
+  - Product ID: `TS0201`
 
 #### Gas Detectors
 - **Tuya Gas Sensor**
-  - Manufacturer: `_TZE200_yojqa8xn`
-  - Product ID: `TS0601`
+  - Manufacturer: `_TYZB01_0w3d5uw3`
+  - Product ID: `TS0204`
 
 ### Alarms
 
 #### Sirens
 - **Tuya Siren**
-  - Manufacturer: `_TZE200_t1blo2bj`
+  - Manufacturer: `_TZE204_q76rtoa9`
   - Product ID: `TS0601`
 
 ## Development Methodology
