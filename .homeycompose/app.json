@@ -1,0 +1,36 @@
+{
+  "id": "com.ndigital.myapp",
+  "version": "1.0.0",
+  "compatibility": ">=12.2.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "NovaDigital/Tuya Devices"
+  },
+  "description": {
+    "en": "Suporte a dispositivos Zemismart/NovaDigital e outros dispositivos Tuya"
+  },
+  "category": [
+    "lights",
+    "appliances",
+    "security",
+    "tools"
+
+  ],
+  "permissions": ["homey:wireless:zigbee"],
+  "brandColor": "#007AFF",
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Gabriel Pedrosa Machado",
+    "email": "g.machado@me.com"
+  },
+  "dependencies": {
+    "homey-zigbeedriver": "^2.1.4"
+  }
+}
