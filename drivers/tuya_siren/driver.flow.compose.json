@@ -1,0 +1,300 @@
+{
+  "triggers": [
+    {
+      "id": "alarm_siren",
+      "title": {
+        "en": "Siren Alarm"
+      },
+      "titleFormatted": {
+        "en": "Siren Alarm"
+      },
+      "hint": {
+        "en": "This card will trigger when siren is activated."
+      },
+      "args": []
+    },
+    {
+      "id": "siren_activated",
+      "title": {
+        "en": "Siren activated"
+      },
+      "titleFormatted": {
+        "en": "Siren was activated"
+      },
+      "hint": {
+        "en": "Triggered when siren starts playing"
+      },
+      "tokens": [
+        {
+          "name": "duration",
+          "type": "number",
+          "title": {
+            "en": "Duration"
+          },
+          "example": 120
+        }
+      ]
+    },
+    {
+      "id": "siren_deactivated",
+      "title": {
+        "en": "Siren deactivated"
+      },
+      "titleFormatted": {
+        "en": "Siren was deactivated"
+      },
+      "hint": {
+        "en": "Triggered when siren stops playing"
+      },
+      "tokens": [
+        {
+          "name": "reason",
+          "type": "string",
+          "title": {
+            "en": "Stop reason"
+          },
+          "example": "auto"
+        }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "siren_alarm_state",
+      "title": {
+        "en": "Turn siren on/off"
+      },
+      "titleFormatted": {
+        "en": "Turn siren [[siren_alarm_state]]"
+      },
+      "hint": {
+        "en": "Turn the siren on or off"
+      },
+      "args": [
+        {
+          "name": "siren_alarm_state",
+          "type": "dropdown",
+          "values": [
+            {
+              "id": "off",
+              "label": {
+                "en": "OFF"
+              }
+            },
+            {
+              "id": "on",
+              "label": {
+                "en": "ON"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "siren_volume",
+      "title": {
+        "en": "Set siren volume"
+      },
+      "titleFormatted": {
+        "en": "Set siren volume to [[siren_volume]]"
+      },
+      "hint": {
+        "en": "Change the volume level of the siren"
+      },
+      "args": [
+        {
+          "name": "siren_volume",
+          "type": "dropdown",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Low"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Medium"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "High"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "siren_duration",
+      "title": {
+        "en": "Set siren duration"
+      },
+      "titleFormatted": {
+        "en": "Set siren duration to [[duration]] seconds"
+      },
+      "hint": {
+        "en": "Set how long the siren will sound"
+      },
+      "args": [
+        {
+          "type": "number",
+          "name": "duration",
+          "min": 1,
+          "max": 1800,
+          "step": 1,
+          "label": {
+            "en": "Seconds"
+          },
+          "placeholder": {
+            "en": "120"
+          }
+        }
+      ]
+    },
+    {
+      "id": "siren_melody",
+      "title": {
+        "en": "Set siren melody"
+      },
+      "titleFormatted": {
+        "en": "Set siren melody to [[siren_melody]]"
+      },
+      "hint": {
+        "en": "Choose which sound the siren will play"
+      },
+      "args": [
+        {
+          "name": "siren_melody",
+          "type": "dropdown",
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Doorbell Chime"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Fur Elise"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "Westminster Chimes"
+              }
+            },
+            {
+              "id": "3",
+              "label": {
+                "en": "Fast double door bell"
+              }
+            },
+            {
+              "id": "4",
+              "label": {
+                "en": "William Tell Overture"
+              }
+            },
+            {
+              "id": "5",
+              "label": {
+                "en": "Turkish March"
+              }
+            },
+            {
+              "id": "6",
+              "label": {
+                "en": "Safe/Security Alarm"
+              }
+            },
+            {
+              "id": "7",
+              "label": {
+                "en": "Chemical Spill Alert"
+              }
+            },
+            {
+              "id": "8",
+              "label": {
+                "en": "Piercing Alarm Clock"
+              }
+            },
+            {
+              "id": "9",
+              "label": {
+                "en": "Smoke Alarm"
+              }
+            },
+            {
+              "id": "10",
+              "label": {
+                "en": "Dog Barking"
+              }
+            },
+            {
+              "id": "11",
+              "label": {
+                "en": "Police Siren"
+              }
+            },
+            {
+              "id": "12",
+              "label": {
+                "en": "Doorbell Chime (reverb)"
+              }
+            },
+            {
+              "id": "13",
+              "label": {
+                "en": "Mechanical Telephone"
+              }
+            },
+            {
+              "id": "14",
+              "label": {
+                "en": "Fire/Ambulance"
+              }
+            },
+            {
+              "id": "15",
+              "label": {
+                "en": "3/1 Elevator"
+              }
+            },
+            {
+              "id": "16",
+              "label": {
+                "en": "Buzzing Alarm Clock"
+              }
+            },
+            {
+              "id": "17",
+              "label": {
+                "en": "School Bell"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "siren_beep",
+      "title": {
+        "en": "Test beep"
+      },
+      "titleFormatted": {
+        "en": "Play test beep"
+      },
+      "hint": {
+        "en": "Play a short 2-second test sound"
+      }
+    }
+  ]
+}

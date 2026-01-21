@@ -1,0 +1,1895 @@
+{
+  "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
+  "id": "com.ndigital.myapp",
+  "version": "1.0.0",
+  "compatibility": ">=12.2.0",
+  "sdk": 3,
+  "platforms": [
+    "local"
+  ],
+  "name": {
+    "en": "NovaDigital/Tuya Devices"
+  },
+  "description": {
+    "en": "Suporte a dispositivos Zemismart/NovaDigital e outros dispositivos Tuya"
+  },
+  "category": [
+    "lights",
+    "appliances",
+    "security",
+    "tools"
+  ],
+  "permissions": [
+    "homey:wireless:zigbee"
+  ],
+  "brandColor": "#007AFF",
+  "images": {
+    "small": "/assets/images/small.png",
+    "large": "/assets/images/large.png",
+    "xlarge": "/assets/images/xlarge.png"
+  },
+  "author": {
+    "name": "Gabriel Pedrosa Machado",
+    "email": "g.machado@me.com"
+  },
+  "dependencies": {
+    "homey-zigbeedriver": "^2.1.4"
+  },
+  "drivers": [
+    {
+      "id": "dimmer_3_gang_moes_fan",
+      "name": {
+        "en": "MOES 3-Gang Fan Controller"
+      },
+      "class": "socket",
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "capabilities": [
+        "onoff",
+        "dim"
+      ],
+      "capabilitiesOptions": {
+        "dim": {
+          "opts": {
+            "duration": true
+          },
+          "title": {
+            "en": "Fan Speed"
+          },
+          "units": {
+            "en": "%"
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/dimmer_3_gang_moes_fan/assets/images/large.png",
+        "small": "/drivers/dimmer_3_gang_moes_fan/assets/images/small.png"
+      },
+      "energy": {
+        "approximation": {
+          "usageOn": 150,
+          "usageOff": 0
+        }
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "_TZE204_1v1dxkck"
+        ],
+        "productId": [
+          "TS0601"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              4,
+              5,
+              61184
+            ],
+            "bindings": [
+              25,
+              10
+            ]
+          }
+        },
+        "devices": {
+          "secondGang": {
+            "class": "socket",
+            "capabilities": [
+              "onoff",
+              "dim"
+            ],
+            "capabilitiesOptions": {
+              "dim": {
+                "title": {
+                  "en": "Fan Speed"
+                },
+                "units": {
+                  "en": "%"
+                }
+              }
+            },
+            "name": {
+              "en": "Fan Controller Gang 2"
+            },
+            "energy": {
+              "approximation": {
+                "usageOn": 150,
+                "usageOff": 0
+              }
+            }
+          },
+          "thirdGang": {
+            "class": "socket",
+            "capabilities": [
+              "onoff",
+              "dim"
+            ],
+            "capabilitiesOptions": {
+              "dim": {
+                "title": {
+                  "en": "Fan Speed"
+                },
+                "units": {
+                  "en": "%"
+                }
+              }
+            },
+            "name": {
+              "en": "Fan Controller Gang 3"
+            },
+            "energy": {
+              "approximation": {
+                "usageOn": 150,
+                "usageOff": 0
+              }
+            }
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/dimmer_3_gang_moes_fan/assets/icon.svg",
+          "instruction": {
+            "en": "Three fan controllers will be created, one for each channel. Press reset switch 10 times rapidly until continuous beep to enter pairing mode."
+          }
+        }
+      },
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Speed Control"
+          },
+          "children": [
+            {
+              "id": "minimumBrightness",
+              "type": "number",
+              "label": {
+                "en": "Min Speed"
+              },
+              "hint": {
+                "en": "Minimum fan speed percentage"
+              },
+              "value": 10,
+              "min": 1,
+              "max": 100,
+              "step": 1,
+              "units": "%"
+            },
+            {
+              "id": "maximumBrightness",
+              "type": "number",
+              "label": {
+                "en": "Max Speed"
+              },
+              "hint": {
+                "en": "Maximum fan speed percentage"
+              },
+              "value": 100,
+              "min": 2,
+              "max": 100,
+              "step": 1,
+              "units": "%"
+            }
+          ]
+        },
+        {
+          "type": "group",
+          "label": {
+            "en": "Behavior"
+          },
+          "children": [
+            {
+              "id": "powerOnState",
+              "type": "dropdown",
+              "label": {
+                "en": "Power-On"
+              },
+              "hint": {
+                "en": "Fan behavior after power outage"
+              },
+              "value": "memory",
+              "values": [
+                {
+                  "id": "off",
+                  "label": {
+                    "en": "Always Off"
+                  }
+                },
+                {
+                  "id": "on",
+                  "label": {
+                    "en": "Always On"
+                  }
+                },
+                {
+                  "id": "memory",
+                  "label": {
+                    "en": "Remember State"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "backlightMode",
+              "type": "dropdown",
+              "label": {
+                "en": "LED Mode"
+              },
+              "hint": {
+                "en": "Status LED behavior"
+              },
+              "value": "normal",
+              "values": [
+                {
+                  "id": "off",
+                  "label": {
+                    "en": "Always Off"
+                  }
+                },
+                {
+                  "id": "normal",
+                  "label": {
+                    "en": "On when running"
+                  }
+                },
+                {
+                  "id": "inverted",
+                  "label": {
+                    "en": "On when stopped"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "gas_detector",
+      "name": {
+        "en": "Smart Gas Detector"
+      },
+      "class": "smokealarm",
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "capabilities": [
+        "alarm_gas",
+        "alarm_problem"
+      ],
+      "energy": {
+        "approximation": {
+          "usageConstant": 1.5
+        }
+      },
+      "images": {
+        "large": "/drivers/gas_detector/assets/images/large.png",
+        "small": "/drivers/gas_detector/assets/images/small.png"
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "_TYZB01_0w3d5uw3"
+        ],
+        "productId": [
+          "TS0204"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              1280,
+              2821
+            ],
+            "bindings": [
+              3,
+              1280
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/gas_detector/assets/icon.svg",
+          "instruction": {
+            "en": "1. Insert detector into socket and wait 3 minutes for warmup. 2. Press and hold reset button for 2 seconds until green LED flashes quickly. 3. Pairing complete when green LED turns off."
+          }
+        }
+      }
+    },
+    {
+      "id": "lcdtemphumidsensor",
+      "name": {
+        "en": "LCD Temperature & Humidity Sensor"
+      },
+      "class": "sensor",
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "capabilities": [
+        "measure_temperature",
+        "measure_humidity",
+        "measure_battery",
+        "alarm_battery"
+      ],
+      "capabilitiesOptions": {
+        "measure_temperature": {
+          "decimals": 1,
+          "units": "°C"
+        },
+        "measure_humidity": {
+          "decimals": 1,
+          "units": "%"
+        },
+        "measure_battery": {
+          "decimals": 0,
+          "units": "%"
+        }
+      },
+      "energy": {
+        "batteries": [
+          "CR2450"
+        ]
+      },
+      "images": {
+        "large": "/drivers/lcdtemphumidsensor/assets/images/large.png",
+        "small": "/drivers/lcdtemphumidsensor/assets/images/small.png"
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "_TZ3000_ywagc4rj"
+        ],
+        "productId": [
+          "TS0201"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              1,
+              1026,
+              1029,
+              57346
+            ],
+            "bindings": [
+              1,
+              1026,
+              1029
+            ]
+          }
+        },
+        "learnmode": {
+          "instruction": {
+            "en": "Press and hold the button on the side of the device for 5 seconds until the LCD flashes."
+          }
+        }
+      }
+    },
+    {
+      "id": "socket_power_strip",
+      "name": {
+        "en": "Power Strip 4 Sockets + USB"
+      },
+      "class": "socket",
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "capabilities": [
+        "onoff"
+      ],
+      "capabilitiesOptions": {
+        "onoff": {
+          "title": {
+            "en": "Power"
+          }
+        }
+      },
+      "images": {
+        "large": "/drivers/socket_power_strip/assets/images/large.png",
+        "small": "/drivers/socket_power_strip/assets/images/small.png"
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "_TZ3000_cfnprab5"
+        ],
+        "productId": [
+          "TS011F"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6
+            ],
+            "bindings": [
+              6
+            ]
+          },
+          "2": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6
+            ],
+            "bindings": [
+              6
+            ]
+          },
+          "3": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6
+            ],
+            "bindings": [
+              6
+            ]
+          },
+          "4": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6
+            ],
+            "bindings": [
+              6
+            ]
+          },
+          "5": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6
+            ],
+            "bindings": [
+              6
+            ]
+          }
+        },
+        "devices": {
+          "socket2": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "name": {
+              "en": "Socket 2/4"
+            },
+            "energy": {
+              "approximation": {
+                "usageOn": 0,
+                "usageOff": 0
+              }
+            }
+          },
+          "socket3": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "name": {
+              "en": "Socket 3/4"
+            },
+            "energy": {
+              "approximation": {
+                "usageOn": 0,
+                "usageOff": 0
+              }
+            }
+          },
+          "socket4": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "name": {
+              "en": "Socket 4/4"
+            },
+            "energy": {
+              "approximation": {
+                "usageOn": 0,
+                "usageOff": 0
+              }
+            }
+          },
+          "usb": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "name": {
+              "en": "USB Port"
+            },
+            "energy": {
+              "approximation": {
+                "usageOn": 5,
+                "usageOff": 0
+              }
+            }
+          }
+        },
+        "learnmode": {
+          "instruction": {
+            "en": "Press and hold on/off switch for 5 seconds until LED blinks."
+          }
+        }
+      }
+    },
+    {
+      "id": "tuya_siren",
+      "name": {
+        "en": "Tuya Siren"
+      },
+      "class": "siren",
+      "capabilities": [
+        "onoff",
+        "measure_battery"
+      ],
+      "capabilitiesOptions": {
+        "onoff": {
+          "title": {
+            "en": "Siren"
+          },
+          "greyout": false
+        },
+        "measure_battery": {
+          "title": {
+            "en": "Battery"
+          }
+        }
+      },
+      "energy": {
+        "batteries": [
+          "CR123A",
+          "CR123A"
+        ]
+      },
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "images": {
+        "small": "/drivers/tuya_siren/assets/images/small.png",
+        "large": "/drivers/tuya_siren/assets/images/large.png"
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "_TZE204_q76rtoa9"
+        ],
+        "productId": [
+          "TS0601"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              4,
+              5,
+              61184
+            ],
+            "bindings": [
+              10,
+              25,
+              61184
+            ]
+          }
+        },
+        "learnmode": {
+          "instruction": {
+            "en": "Press and hold the button inside the battery compartment for approximately 5 seconds until the LED blinks rapidly."
+          }
+        }
+      },
+      "settings": [
+        {
+          "id": "alarmvolume",
+          "type": "dropdown",
+          "label": {
+            "en": "Alarm volume"
+          },
+          "value": "2",
+          "hint": {
+            "en": "Set the volume of the Alarm sound"
+          },
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Low"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Medium"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "High (default)"
+              }
+            }
+          ]
+        },
+        {
+          "id": "alarmsoundtime",
+          "type": "number",
+          "value": 10,
+          "min": 1,
+          "max": 65535,
+          "step": 1,
+          "units": {
+            "en": "Seconds"
+          },
+          "label": {
+            "en": "Alarm duration time"
+          },
+          "hint": {
+            "en": "Set the duration of the time the siren will sound its alarm music"
+          }
+        },
+        {
+          "id": "alarmtune",
+          "type": "dropdown",
+          "label": {
+            "en": "Alarm sound tune"
+          },
+          "value": "5",
+          "hint": {
+            "en": "Choose the tune of the alarm sound"
+          },
+          "values": [
+            {
+              "id": "0",
+              "label": {
+                "en": "Doorbell Chime"
+              }
+            },
+            {
+              "id": "1",
+              "label": {
+                "en": "Fur Elise"
+              }
+            },
+            {
+              "id": "2",
+              "label": {
+                "en": "Westminster Chimes"
+              }
+            },
+            {
+              "id": "3",
+              "label": {
+                "en": "Fast double door bell"
+              }
+            },
+            {
+              "id": "4",
+              "label": {
+                "en": "William Tell Overture"
+              }
+            },
+            {
+              "id": "5",
+              "label": {
+                "en": "Turkish March (default)"
+              }
+            },
+            {
+              "id": "6",
+              "label": {
+                "en": "Safe/Security Alarm"
+              }
+            },
+            {
+              "id": "7",
+              "label": {
+                "en": "Chemical Spill Alert"
+              }
+            },
+            {
+              "id": "8",
+              "label": {
+                "en": "Piercing Alarm Clock"
+              }
+            },
+            {
+              "id": "9",
+              "label": {
+                "en": "Smoke Alarm"
+              }
+            },
+            {
+              "id": "10",
+              "label": {
+                "en": "Dog Barking"
+              }
+            },
+            {
+              "id": "11",
+              "label": {
+                "en": "Police Siren"
+              }
+            },
+            {
+              "id": "12",
+              "label": {
+                "en": "Doorbell Chime (reverb)"
+              }
+            },
+            {
+              "id": "13",
+              "label": {
+                "en": "Mechanical Telephone"
+              }
+            },
+            {
+              "id": "14",
+              "label": {
+                "en": "Fire/Ambulance"
+              }
+            },
+            {
+              "id": "15",
+              "label": {
+                "en": "3/1 Elevator"
+              }
+            },
+            {
+              "id": "16",
+              "label": {
+                "en": "Buzzing Alarm Clock"
+              }
+            },
+            {
+              "id": "17",
+              "label": {
+                "en": "School Bell"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zemismart_switch_1_gang",
+      "name": {
+        "en": "Zemismart Wall Switch 1 Gang"
+      },
+      "class": "socket",
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "capabilities": [
+        "onoff"
+      ],
+      "images": {
+        "large": "/drivers/zemismart_switch_1_gang/assets/images/large.png",
+        "small": "/drivers/zemismart_switch_1_gang/assets/images/small.png"
+      },
+      "energy": {
+        "approximation": {
+          "usageOn": 0,
+          "usageOff": 0
+        }
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "_TZ3000_ovyaisip",
+          "_TZ3000_pk8tgtdb"
+        ],
+        "productId": [
+          "TS0001"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              57344,
+              57345
+            ],
+            "bindings": [
+              6
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/zemismart_switch_1_gang/assets/icon.svg",
+          "instruction": {
+            "en": "Press and hold the setup button for 5 seconds until the LED starts blinking."
+          }
+        }
+      },
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Device Settings"
+          },
+          "children": [
+            {
+              "id": "power_on_behavior",
+              "type": "radio",
+              "label": {
+                "en": "Power-On Behavior"
+              },
+              "hint": {
+                "en": "Switch state when power is restored after an outage"
+              },
+              "value": "2",
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Always Off"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Always On"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Restore Previous State"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "backlight_enabled",
+              "type": "checkbox",
+              "label": {
+                "en": "Backlight"
+              },
+              "hint": {
+                "en": "Enable LED backlight indicator"
+              },
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zemismart_switch_2_gang",
+      "name": {
+        "en": "Zemismart Wall Switch 2 Gang"
+      },
+      "class": "socket",
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "capabilities": [
+        "onoff"
+      ],
+      "images": {
+        "large": "/drivers/zemismart_switch_2_gang/assets/images/large.png",
+        "small": "/drivers/zemismart_switch_2_gang/assets/images/small.png"
+      },
+      "energy": {
+        "approximation": {
+          "usageOn": 0,
+          "usageOff": 0
+        }
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "_TZ3000_ywubfuvt",
+          "_TZ3000_kgxej1dv"
+        ],
+        "productId": [
+          "TS0002"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              57344,
+              57345
+            ],
+            "bindings": [
+              6
+            ]
+          },
+          "2": {
+            "clusters": [
+              4,
+              5,
+              6,
+              57345
+            ],
+            "bindings": [
+              6
+            ]
+          }
+        },
+        "devices": {
+          "secondSwitch": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "name": {
+              "en": "Zemismart 2 Gang - Switch 2"
+            },
+            "energy": {
+              "approximation": {
+                "usageOn": 0,
+                "usageOff": 0
+              }
+            },
+            "settings": []
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/zemismart_switch_2_gang/assets/icon.svg",
+          "instruction": {
+            "en": "Press and hold the setup button for 5 seconds until the LED starts blinking. Two device tiles will be created, one for each gang."
+          }
+        }
+      },
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Device Settings"
+          },
+          "children": [
+            {
+              "id": "backlight_enabled",
+              "type": "checkbox",
+              "label": {
+                "en": "Backlight"
+              },
+              "hint": {
+                "en": "Enable or disable the button LED indicator (only available on main device)"
+              },
+              "value": true
+            },
+            {
+              "id": "power_on_behavior",
+              "type": "radio",
+              "label": {
+                "en": "Power-On Behavior"
+              },
+              "hint": {
+                "en": "Switch state when power is restored after an outage (only available on main device)"
+              },
+              "value": "2",
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Always Off"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Always On"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Restore Previous State"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zemismart_switch_3_gang",
+      "name": {
+        "en": "Zemismart Wall Switch 3 Gang"
+      },
+      "class": "socket",
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "capabilities": [
+        "onoff"
+      ],
+      "images": {
+        "large": "/drivers/zemismart_switch_3_gang/assets/images/large.png",
+        "small": "/drivers/zemismart_switch_3_gang/assets/images/small.png"
+      },
+      "energy": {
+        "approximation": {
+          "usageOn": 0,
+          "usageOff": 0
+        }
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "_TZ3000_yervjnlj",
+          "_TZ3000_vjhcenzo",
+          "_TZ3000_qxcnwv26",
+          "_TZ3000_eqsair32",
+          "_TZ3000_f09j9qjb",
+          "_TZ3000_fawk5xjv",
+          "_TZ3000_ok0ggpk7"
+        ],
+        "productId": [
+          "TS0003"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3,
+              4,
+              5,
+              6,
+              57344,
+              57345
+            ],
+            "bindings": [
+              6
+            ]
+          },
+          "2": {
+            "clusters": [
+              4,
+              5,
+              6,
+              57345
+            ],
+            "bindings": [
+              6
+            ]
+          },
+          "3": {
+            "clusters": [
+              4,
+              5,
+              6,
+              57345
+            ],
+            "bindings": [
+              6
+            ]
+          }
+        },
+        "devices": {
+          "secondSwitch": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "name": {
+              "en": "Zemismart 3 Gang - Switch 2"
+            },
+            "energy": {
+              "approximation": {
+                "usageOn": 0,
+                "usageOff": 0
+              }
+            },
+            "settings": []
+          },
+          "thirdSwitch": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "name": {
+              "en": "Zemismart 3 Gang - Switch 3"
+            },
+            "energy": {
+              "approximation": {
+                "usageOn": 0,
+                "usageOff": 0
+              }
+            },
+            "settings": []
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/zemismart_switch_3_gang/assets/icon.svg",
+          "instruction": {
+            "en": "Press and hold the setup button for 5 seconds until the LED starts blinking. Three device tiles will be created, one for each gang."
+          }
+        }
+      },
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Device Settings"
+          },
+          "children": [
+            {
+              "id": "power_on_behavior",
+              "type": "radio",
+              "label": {
+                "en": "Power-On Behavior"
+              },
+              "hint": {
+                "en": "Switch state when power is restored after an outage (individual per gang)"
+              },
+              "value": "2",
+              "values": [
+                {
+                  "id": "0",
+                  "label": {
+                    "en": "Always Off"
+                  }
+                },
+                {
+                  "id": "1",
+                  "label": {
+                    "en": "Always On"
+                  }
+                },
+                {
+                  "id": "2",
+                  "label": {
+                    "en": "Restore Previous State"
+                  }
+                }
+              ]
+            },
+            {
+              "id": "backlight_enabled",
+              "type": "checkbox",
+              "label": {
+                "en": "Backlight"
+              },
+              "hint": {
+                "en": "Enable LED backlight indicator (device-wide setting, controlled by Gang 1 only)"
+              },
+              "value": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zemismart_switch_4_gang",
+      "name": {
+        "en": "Zemismart Wall Switch 4 Gang"
+      },
+      "class": "socket",
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "capabilities": [
+        "onoff"
+      ],
+      "images": {
+        "large": "/drivers/zemismart_switch_4_gang/assets/images/large.png",
+        "small": "/drivers/zemismart_switch_4_gang/assets/images/small.png"
+      },
+      "energy": {
+        "approximation": {
+          "usageOn": 0,
+          "usageOff": 0
+        }
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "_TZE200_shkxsgis",
+          "_TZE204_aagrxlbd"
+        ],
+        "productId": [
+          "TS0601"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              4,
+              5,
+              61184
+            ],
+            "bindings": [
+              25,
+              10
+            ]
+          }
+        },
+        "devices": {
+          "secondGang": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "name": {
+              "en": "Zemismart 4 Gang - Switch 2"
+            },
+            "energy": {
+              "approximation": {
+                "usageOn": 0,
+                "usageOff": 0
+              }
+            },
+            "settings": []
+          },
+          "thirdGang": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "name": {
+              "en": "Zemismart 4 Gang - Switch 3"
+            },
+            "energy": {
+              "approximation": {
+                "usageOn": 0,
+                "usageOff": 0
+              }
+            },
+            "settings": []
+          },
+          "fourthGang": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "name": {
+              "en": "Zemismart 4 Gang - Switch 4"
+            },
+            "energy": {
+              "approximation": {
+                "usageOn": 0,
+                "usageOff": 0
+              }
+            },
+            "settings": []
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/zemismart_switch_4_gang/assets/icon.svg",
+          "instruction": {
+            "en": "Press and hold the setup button for 5 seconds until the LED starts blinking. Four device tiles will be created, one for each gang."
+          }
+        }
+      },
+      "settings": [
+        {
+          "type": "group",
+          "label": {
+            "en": "Device Settings"
+          },
+          "children": [
+            {
+              "id": "power_on_behavior",
+              "type": "dropdown",
+              "label": {
+                "en": "Power-On Behavior"
+              },
+              "hint": {
+                "en": "How switches behave when power returns after outage"
+              },
+              "value": "memory",
+              "values": [
+                {
+                  "id": "off",
+                  "label": {
+                    "en": "Always Off"
+                  }
+                },
+                {
+                  "id": "on",
+                  "label": {
+                    "en": "Always On"
+                  }
+                },
+                {
+                  "id": "memory",
+                  "label": {
+                    "en": "Remember Last State"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zemismart_switch_6_gang",
+      "name": {
+        "en": "Zemismart Wall Switch 6 Gang"
+      },
+      "class": "socket",
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "capabilities": [
+        "onoff"
+      ],
+      "images": {
+        "large": "/drivers/zemismart_switch_6_gang/assets/images/large.png",
+        "small": "/drivers/zemismart_switch_6_gang/assets/images/small.png"
+      },
+      "energy": {
+        "approximation": {
+          "usageOn": 0,
+          "usageOff": 0
+        }
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "_TZE200_r731zlxk"
+        ],
+        "productId": [
+          "TS0601"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              4,
+              5,
+              61184
+            ],
+            "bindings": [
+              25,
+              10
+            ]
+          }
+        },
+        "devices": {
+          "secondGang": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "name": {
+              "en": "Zemismart 6 Gang - Switch 2"
+            },
+            "energy": {
+              "approximation": {
+                "usageOn": 0,
+                "usageOff": 0
+              }
+            },
+            "settings": []
+          },
+          "thirdGang": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "name": {
+              "en": "Zemismart 6 Gang - Switch 3"
+            },
+            "energy": {
+              "approximation": {
+                "usageOn": 0,
+                "usageOff": 0
+              }
+            },
+            "settings": []
+          },
+          "fourthGang": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "name": {
+              "en": "Zemismart 6 Gang - Switch 4"
+            },
+            "energy": {
+              "approximation": {
+                "usageOn": 0,
+                "usageOff": 0
+              }
+            },
+            "settings": []
+          },
+          "fifthGang": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "name": {
+              "en": "Zemismart 6 Gang - Switch 5"
+            },
+            "energy": {
+              "approximation": {
+                "usageOn": 0,
+                "usageOff": 0
+              }
+            },
+            "settings": []
+          },
+          "sixthGang": {
+            "class": "socket",
+            "capabilities": [
+              "onoff"
+            ],
+            "name": {
+              "en": "Zemismart 6 Gang - Switch 6"
+            },
+            "energy": {
+              "approximation": {
+                "usageOn": 0,
+                "usageOff": 0
+              }
+            },
+            "settings": []
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/zemismart_switch_6_gang/assets/icon.svg",
+          "instruction": {
+            "en": "Press and hold the setup button for 5 seconds until the LED starts blinking. Six device tiles will be created, one for each gang."
+          }
+        }
+      },
+      "settings": []
+    },
+    {
+      "id": "zigbee_repeater",
+      "name": {
+        "en": "Zigbee Repeater"
+      },
+      "class": "other",
+      "platforms": [
+        "local"
+      ],
+      "connectivity": [
+        "zigbee"
+      ],
+      "capabilities": [],
+      "images": {
+        "large": "/drivers/zigbee_repeater/assets/images/large.png",
+        "small": "/drivers/zigbee_repeater/assets/images/small.png"
+      },
+      "zigbee": {
+        "manufacturerName": [
+          "_TZ3000_m0vaazab",
+          "_TZ3000_5k5vh43t",
+          "_TZ3000_ufttklsz",
+          "_TZ3000_gszjt2xx",
+          "_TZ3000_nkkl7uzv",
+          "_TZ3000_nlsszmzl",
+          "_TZ3000_misw04hq",
+          "_TZ3000_wlquqiiz"
+        ],
+        "productId": [
+          "TS0207"
+        ],
+        "endpoints": {
+          "1": {
+            "clusters": [
+              0,
+              3
+            ]
+          }
+        },
+        "learnmode": {
+          "image": "/drivers/zigbee_repeater/assets/icon.svg",
+          "instruction": {
+            "en": "Put the device in a USB slot and let it power up."
+          }
+        }
+      },
+      "settings": []
+    }
+  ],
+  "flow": {
+    "triggers": [
+      {
+        "id": "alarm_siren",
+        "title": {
+          "en": "Siren Alarm"
+        },
+        "titleFormatted": {
+          "en": "Siren Alarm"
+        },
+        "hint": {
+          "en": "This card will trigger when siren is activated."
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=tuya_siren"
+          }
+        ]
+      },
+      {
+        "id": "siren_activated",
+        "title": {
+          "en": "Siren activated"
+        },
+        "titleFormatted": {
+          "en": "Siren was activated"
+        },
+        "hint": {
+          "en": "Triggered when siren starts playing"
+        },
+        "tokens": [
+          {
+            "name": "duration",
+            "type": "number",
+            "title": {
+              "en": "Duration"
+            },
+            "example": 120
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=tuya_siren"
+          }
+        ]
+      },
+      {
+        "id": "siren_deactivated",
+        "title": {
+          "en": "Siren deactivated"
+        },
+        "titleFormatted": {
+          "en": "Siren was deactivated"
+        },
+        "hint": {
+          "en": "Triggered when siren stops playing"
+        },
+        "tokens": [
+          {
+            "name": "reason",
+            "type": "string",
+            "title": {
+              "en": "Stop reason"
+            },
+            "example": "auto"
+          }
+        ],
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=tuya_siren"
+          }
+        ]
+      }
+    ],
+    "actions": [
+      {
+        "id": "siren_alarm_state",
+        "title": {
+          "en": "Turn siren on/off"
+        },
+        "titleFormatted": {
+          "en": "Turn siren [[siren_alarm_state]]"
+        },
+        "hint": {
+          "en": "Turn the siren on or off"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=tuya_siren"
+          },
+          {
+            "name": "siren_alarm_state",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "off",
+                "label": {
+                  "en": "OFF"
+                }
+              },
+              {
+                "id": "on",
+                "label": {
+                  "en": "ON"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "siren_volume",
+        "title": {
+          "en": "Set siren volume"
+        },
+        "titleFormatted": {
+          "en": "Set siren volume to [[siren_volume]]"
+        },
+        "hint": {
+          "en": "Change the volume level of the siren"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=tuya_siren"
+          },
+          {
+            "name": "siren_volume",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Low"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Medium"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "High"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "siren_duration",
+        "title": {
+          "en": "Set siren duration"
+        },
+        "titleFormatted": {
+          "en": "Set siren duration to [[duration]] seconds"
+        },
+        "hint": {
+          "en": "Set how long the siren will sound"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=tuya_siren"
+          },
+          {
+            "type": "number",
+            "name": "duration",
+            "min": 1,
+            "max": 1800,
+            "step": 1,
+            "label": {
+              "en": "Seconds"
+            },
+            "placeholder": {
+              "en": "120"
+            }
+          }
+        ]
+      },
+      {
+        "id": "siren_melody",
+        "title": {
+          "en": "Set siren melody"
+        },
+        "titleFormatted": {
+          "en": "Set siren melody to [[siren_melody]]"
+        },
+        "hint": {
+          "en": "Choose which sound the siren will play"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=tuya_siren"
+          },
+          {
+            "name": "siren_melody",
+            "type": "dropdown",
+            "values": [
+              {
+                "id": "0",
+                "label": {
+                  "en": "Doorbell Chime"
+                }
+              },
+              {
+                "id": "1",
+                "label": {
+                  "en": "Fur Elise"
+                }
+              },
+              {
+                "id": "2",
+                "label": {
+                  "en": "Westminster Chimes"
+                }
+              },
+              {
+                "id": "3",
+                "label": {
+                  "en": "Fast double door bell"
+                }
+              },
+              {
+                "id": "4",
+                "label": {
+                  "en": "William Tell Overture"
+                }
+              },
+              {
+                "id": "5",
+                "label": {
+                  "en": "Turkish March"
+                }
+              },
+              {
+                "id": "6",
+                "label": {
+                  "en": "Safe/Security Alarm"
+                }
+              },
+              {
+                "id": "7",
+                "label": {
+                  "en": "Chemical Spill Alert"
+                }
+              },
+              {
+                "id": "8",
+                "label": {
+                  "en": "Piercing Alarm Clock"
+                }
+              },
+              {
+                "id": "9",
+                "label": {
+                  "en": "Smoke Alarm"
+                }
+              },
+              {
+                "id": "10",
+                "label": {
+                  "en": "Dog Barking"
+                }
+              },
+              {
+                "id": "11",
+                "label": {
+                  "en": "Police Siren"
+                }
+              },
+              {
+                "id": "12",
+                "label": {
+                  "en": "Doorbell Chime (reverb)"
+                }
+              },
+              {
+                "id": "13",
+                "label": {
+                  "en": "Mechanical Telephone"
+                }
+              },
+              {
+                "id": "14",
+                "label": {
+                  "en": "Fire/Ambulance"
+                }
+              },
+              {
+                "id": "15",
+                "label": {
+                  "en": "3/1 Elevator"
+                }
+              },
+              {
+                "id": "16",
+                "label": {
+                  "en": "Buzzing Alarm Clock"
+                }
+              },
+              {
+                "id": "17",
+                "label": {
+                  "en": "School Bell"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "siren_beep",
+        "title": {
+          "en": "Test beep"
+        },
+        "titleFormatted": {
+          "en": "Play test beep"
+        },
+        "hint": {
+          "en": "Play a short 2-second test sound"
+        },
+        "args": [
+          {
+            "type": "device",
+            "name": "device",
+            "filter": "driver_id=tuya_siren"
+          }
+        ]
+      }
+    ]
+  }
+}
